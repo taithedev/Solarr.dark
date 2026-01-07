@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="solarr.dark - stealth hub by taithedev">
     <title>solarr.dark</title>
-    <!-- handcrafted by taithedev 2026 🔥 -->
+    <!-- handcrafted by taithedev 2026 🔥 no cap -->
     <style>
         :root {
-            --accent-color: #00ffae; /* Crystal-like teal-green glow */
+            --accent-color: #00ffae; /* crystal teal glow */
             --text-color: #e0e0e0;
             --bg-start: #0a0a1f;
             --bg-end: #000000;
-            --glass-bg: rgba(10, 15, 35, 0.6);
-            --glass-blur: blur(24px);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-            --glow: 0 0 20px var(--accent-color);
+            --glass-bg: rgba(10, 15, 35, 0.65);
+            --glass-blur: blur(26px);
+            --glass-border: 1px solid rgba(0, 255, 174, 0.2);
+            --glow: 0 0 25px var(--accent-color);
         }
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
@@ -26,17 +26,16 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Strong glass fallback for old browsers or issues */
-        @supports not (backdrop-filter: blur(24px)) or (-webkit-backdrop-filter: none) {
-            .glass { background: rgba(10, 15, 35, 0.9) !important; }
+        @supports not (backdrop-filter: blur(26px)) or (-webkit-backdrop-filter: none) {
+            .glass { background: rgba(10, 15, 35, 0.95) !important; }
         }
         .glass {
             background: var(--glass-bg);
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
             border: var(--glass-border);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
         nav {
             position: fixed;
@@ -44,10 +43,9 @@
             width: 100%;
             padding: 20px 0;
             z-index: 100;
-            transition: 0.4s;
         }
         #nav-inner {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -57,44 +55,44 @@
         #online-counter {
             position: absolute;
             left: 30px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-weight: bold;
             color: var(--accent-color);
+            border-radius: 20px;
         }
         .nav-links {
             display: flex;
-            gap: 15px;
+            gap: 18px;
             flex-wrap: wrap;
             justify-content: center;
         }
         nav a {
-            padding: 12px 28px;
-            border-radius: 15px;
+            padding: 14px 32px;
+            border-radius: 18px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 1.15em;
             color: var(--text-color);
-            background: rgba(255,255,255,0.05);
-            transition: all 0.4s;
+            background: rgba(255,255,255,0.06);
+            transition: all 0.45s;
         }
         nav a:hover {
-            background: rgba(0, 255, 174, 0.15);
+            background: rgba(0, 255, 174, 0.2);
             color: var(--accent-color);
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             box-shadow: var(--glow);
         }
-        /* Nav layouts for customization */
-        .nav-split .nav-links { justify-content: space-between; width: 100%; padding: 0 100px; }
-        .nav-left .nav-links { justify-content: flex-start; margin-left: 150px; }
+        .nav-split .nav-links { justify-content: space-between; width: 100%; padding: 0 120px; }
+        .nav-left .nav-links { justify-content: flex-start; margin-left: 180px; }
         section {
             min-height: 100vh;
-            padding: 120px 40px 60px;
-            max-width: 1200px;
+            padding: 140px 40px 80px;
+            max-width: 1300px;
             margin: 0 auto;
             text-align: center;
         }
         h1, h2 {
-            font-size: 4em;
+            font-size: 4.5em;
             background: linear-gradient(to right, #ffffff, var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -102,29 +100,29 @@
         }
         .btn {
             position: relative;
-            padding: 18px 50px;
-            font-size: 1.2em;
+            padding: 20px 60px;
+            font-size: 1.3em;
             font-weight: bold;
             color: #000;
             background: var(--accent-color);
             border: none;
-            border-radius: 50px;
+            border-radius: 60px;
             cursor: pointer;
             overflow: hidden;
             transition: 0.5s;
             box-shadow: var(--glow);
         }
         .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 40px var(--accent-color);
+            transform: scale(1.12);
+            box-shadow: 0 0 50px var(--accent-color);
         }
         .btn::before {
             content: '';
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.7s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            transition: 0.8s;
         }
         .btn:hover::before { left: 100%; }
         #particles-js {
@@ -137,8 +135,8 @@
         }
         .snowflake {
             position: absolute;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 1.2em;
+            color: rgba(0, 255, 174, 0.4);
+            font-size: 1.4em;
             animation: fall linear infinite;
         }
         @keyframes fall {
@@ -152,175 +150,94 @@
             font-size: 0.9em;
         }
         iframe {
-            width: 90%;
-            height: 700px;
+            width: 92%;
+            height: 720px;
             border: var(--glass-border);
-            border-radius: 20px;
-            background: var(--glass-bg);
+            border-radius: 24px;
             box-shadow: var(--glow);
         }
-        #notes-list {
-            max-width: 800px;
-            margin: 30px auto;
-        }
+        #notes-list { max-width: 900px; margin: 40px auto; }
         .note {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            margin: 15px;
-            border-radius: 15px;
-            border: var(--glass-border);
-            transition: transform 0.4s;
-            box-shadow: var(--glow);
-        }
-        .note:hover {
-            transform: scale(1.05);
-        }
-        .admin-only {
-            display: none;
-        }
-        #tic-tac-toe {
-            display: grid;
-            grid-template-columns: repeat(3, 120px);
-            gap: 15px;
-            margin: 30px auto;
-            max-width: 400px;
-        }
-        #tic-tac-toe div {
-            background: var(--glass-bg);
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-            cursor: pointer;
-            border-radius: 15px;
-            border: var(--glass-border);
-            transition: 0.4s;
-        }
-        #tic-tac-toe div:hover {
-            box-shadow: var(--glow);
-        }
-        .stat-card {
-            background: var(--glass-bg);
+            background: rgba(255,255,255,0.06);
             padding: 25px;
             margin: 20px;
             border-radius: 20px;
             border: var(--glass-border);
-            display: inline-block;
-            min-width: 250px;
+            transition: transform 0.4s;
             box-shadow: var(--glow);
         }
-        #owner-profile {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: left;
+        .note:hover { transform: scale(1.06); }
+        .admin-only { display: none; }
+        #tic-tac-toe {
+            display: grid;
+            grid-template-columns: repeat(3, 130px);
+            gap: 18px;
+            margin: 40px auto;
+            max-width: 450px;
         }
+        #tic-tac-toe div {
+            background: var(--glass-bg);
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5em;
+            cursor: pointer;
+            border-radius: 20px;
+            border: var(--glass-border);
+            transition: 0.4s;
+        }
+        #tic-tac-toe div:hover { box-shadow: var(--glow); }
+        .stat-card {
+            background: var(--glass-bg);
+            padding: 30px;
+            margin: 25px;
+            border-radius: 24px;
+            border: var(--glass-border);
+            display: inline-block;
+            min-width: 280px;
+            box-shadow: var(--glow);
+        }
+        #owner-profile { max-width: 800px; margin: 0 auto; text-align: left; }
         #owner-pfp {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: var(--glass-border);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             box-shadow: var(--glow);
-        }
-        #owner-edit-form {
-            display: none;
         }
         #owner-edit-form input, #owner-edit-form textarea {
             width: 100%;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.05);
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.06);
             color: var(--text-color);
             border: var(--glass-border);
-            font-size: 1.1em;
+            font-size: 1.15em;
         }
-        #theme-form label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: 600;
-        }
-        #theme-form input, #theme-form select {
-            width: 100%;
-            padding: 15px;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.05);
-            color: var(--text-color);
-            border: var(--glass-border);
-        }
-        .admin-only {
-            display: none;
-        }
-        #ttt-status {
-            font-size: 1.5em;
-            margin: 20px 0;
-            color: var(--accent-color);
-        }
-        #pass-input {
-            width: 60%;
-            padding: 15px;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.05);
+        #pass-input, #note-input {
+            width: 70%;
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.06);
             color: var(--text-color);
             border: var(--glass-border);
             font-size: 1.2em;
         }
-        #role-display {
-            font-size: 1.2em;
-            color: var(--accent-color);
-            margin: 20px 0;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            max-width: 800px;
-            margin: 30px auto;
-        }
+        #role-display { font-size: 1.4em; color: var(--accent-color); margin: 30px 0; }
+        ul { list-style: none; padding: 0; max-width: 900px; margin: 40px auto; }
         li {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 15px;
+            background: rgba(255,255,255,0.06);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 20px;
             border: var(--glass-border);
-            font-size: 1.1em;
+            font-size: 1.2em;
             box-shadow: var(--glow);
         }
-        #note-input {
-            width: 60%;
-            padding: 15px;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.05);
-            color: var(--text-color);
-            border: var(--glass-border);
-            font-size: 1.1em;
-        }
-        .download-btn {
-            background: var(--accent-color);
-            color: #000;
-            padding: 18px 50px;
-            border-radius: 50px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: 0.4s;
-            box-shadow: var(--glow);
-        }
-        .download-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 40px var(--accent-color);
-        }
-        /* More styles for compatibility */
-        * {
-            box-sizing: border-box;
-        }
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
+        .footer-credit { text-align: center; padding: 40px; opacity: 0.7; font-size: 1.1em; }
     </style>
 </head>
 <body>
@@ -328,154 +245,79 @@
         <div id="nav-inner">
             <div id="online-counter" class="glass">Users Online: <span id="online-count">1</span> 👥</div>
             <div class="nav-links" id="nav-links">
-                <a href="#home">Home</a>
-                <a href="#features">Features</a>
-                <a href="#games">Games</a>
-                <a href="#search">Search</a>
-                <a href="#notes">Notes</a>
-                <a href="#stats">Stats</a>
-                <a href="#admin">Admin</a>
-                <a href="#owner">Owner</a>
-                <a href="#updates">Updates</a>
-                <a href="#login">Login</a>
-                <a href="#settings">Settings</a>
+                <a href="#home">Home</a><a href="#features">Features</a><a href="#games">Games</a><a href="#search">Search</a><a href="#notes">Notes</a><a href="#stats">Stats</a><a href="#admin">Admin</a><a href="#owner">Owner</a><a href="#updates">Updates</a><a href="#login">Login</a><a href="#settings">Settings</a>
             </div>
         </div>
     </nav>
 
     <div id="particles-js"></div>
 
-    <section id="home" class="glass">
-        <h1>solarr.dark</h1>
-        <p>The ultimate school stealth hub – games, search, notes, stats, owner page, and more. Stay lowkey 🔥</p>
-        <button class="btn" onclick="document.querySelector('#login').scrollIntoView({behavior:'smooth'})">Login for Perks</button>
-    </section>
+    <section id="home" class="glass"><h1>solarr.dark</h1><p>The ultimate school stealth hub – games, search, notes, stats, owner page, and more. Stay lowkey 🔥</p><button class="btn" onclick="document.querySelector('#login').scrollIntoView({behavior:'smooth'})">Login for Perks</button></section>
 
-    <section id="features" class="glass">
-        <h2>Features That Slap</h2>
-        <ul>
-            <li>🎮 Offline & Online Games (unblocked school vibes)</li>
-            <li>🔍 Secret Google Search (bypass blocks easy)</li>
-            <li>🔑 Admin/Owner Perks (passwords: admin 1010 | owner 0110 | VIP tairizzu | Pookie tailovesyoupookie)</li>
-            <li>📢 Announcements, Bans, Kicks (admin+ only)</li>
-            <li>👤 Optional Accounts</li>
-            <li>📝 Notes System (save your stuff)</li>
-            <li>🚀 Updates & Custom Themes</li>
-            <li>& more etc!</li>
-        </ul>
-    </section>
+    <section id="features" class="glass"><h2>Features That Slap</h2><ul><li>🎮 Offline & Online Games (unblocked school vibes)</li><li>🔍 Secret Google Search (bypass blocks easy)</li><li>🔑 Admin/Owner Perks</li><li>📢 Announcements, Bans, Kicks</li><li>👥 Live User Count & Stats</li><li>👤 Optional Accounts</li><li>📝 Notes System</li><li>🧑‍💼 Custom Owner Profile</li><li>🚀 Updates & Glass Themes</li></ul></section>
 
-    <section id="games" class="glass">
-        <h2>Games Zone 🎮</h2>
-        <p>Play these unblocked – some embedded, some links!</p>
-        <button class="btn" onclick="window.open('https://www.coolmathgames.com','_blank')">Cool Math Games</button>
-        <button class="btn" onclick="window.open('https://slope.game','_blank')">Slope</button>
-        <div id="tic-tac-toe"></div>
-        <p id="ttt-status">X's turn</p>
-        <button class="btn" onclick="resetTTT()">Reset Game</button>
-    </section>
+    <section id="games" class="glass"><h2>Games Zone 🎮</h2><button class="btn" onclick="window.open('https://www.coolmathgames.com','_blank')">Cool Math</button><button class="btn" onclick="window.open('https://slope.game','_blank')">Slope</button><div id="tic-tac-toe"></div><p id="ttt-status">X's turn</p><button class="btn" onclick="resetTTT()">Reset</button></section>
 
-    <section id="search" class="glass">
-        <h2>Secret Search 🔍</h2>
-        <p>Look up anything without getting blocked (proxy vibes)</p>
-        <iframe src="https://www.google.com/webhp?igu=1"></iframe>
-    </section>
+    <section id="search" class="glass"><h2>Secret Search 🔍</h2><iframe src="https://www.google.com/webhp?igu=1"></iframe></section>
 
-    <section id="notes" class="glass">
-        <h2>Notes System 📝</h2>
-        <input type="text" id="note-input" placeholder="Write note...">
-        <button class="btn" onclick="addNote()">Add Note</button>
-        <div id="notes-list"></div>
-    </section>
+    <section id="notes" class="glass"><h2>Notes System 📝</h2><input type="text" id="note-input" placeholder="Write note..."><button class="btn" onclick="addNote()">Add Note</button><div id="notes-list"></div></section>
 
-    <section id="stats" class="glass">
-        <h2>Live Stats 👥📊</h2>
-        <div class="stat-card">Users Online: <span id="stats-online">1</span></div>
-        <div class="stat-card">Total Logins: <span id="stats-logins">0</span></div>
-        <div class="stat-card">Notes Saved: <span id="stats-notes">0</span></div>
-        <div class="stat-card">Games Won (X): <span id="stats-xwins">0</span></div>
-        <div class="stat-card">Games Won (O): <span id="stats-owins">0</span></div>
-        <div class="stat-card">Total Pranks Pulled: <span id="stats-etc">420</span> 😂</div>
-    </section>
+    <section id="stats" class="glass"><h2>Live Stats 👥📊</h2><div class="stat-card">Users Online: <span id="stats-online">1</span></div><div class="stat-card">Total Logins: <span id="stats-logins">0</span></div><div class="stat-card">Notes Saved: <span id="stats-notes">0</span></div><div class="stat-card">Games Won (X): <span id="stats-xwins">0</span></div><div class="stat-card">Games Won (O): <span id="stats-owins">0</span></div><div class="stat-card">Total Pranks: <span id="stats-etc">420</span> 😂</div></section>
 
-    <section id="admin" class="glass admin-only">
-        <h2>Admin Panel 🔑</h2>
-        <button class="btn" onclick="sendAnnouncement()">Send Announcement</button>
-        <button class="btn" onclick="alert('User banned! (demo)')">Ban User</button>
-        <button class="btn" onclick="alert('User kicked! (demo)')">Kick User</button>
-    </section>
+    <section id="admin" class="glass admin-only"><h2>Admin Panel 🔑</h2><button class="btn" onclick="sendAnnouncement()">Send Announcement</button><button class="btn" onclick="alert('Banned!')">Ban User</button><button class="btn" onclick="alert('Kicked!')">Kick User</button></section>
 
-    <section id="owner" class="glass">
-        <h2>Owner Account 🧑‍💼</h2>
-        <div id="owner-profile">
-            <img id="owner-pfp" src="https://via.placeholder.com/180" alt="Owner PFP">
-            <h3 id="owner-display-name">Tai Rizzu</h3>
-            <p id="owner-username">@auragod</p>
-            <p id="owner-ranks">Ranks: God Tier, Founder</p>
-            <p id="owner-nametags">Nametags: #2026Vibes #TaiTheDev</p>
-            <p id="owner-bio">Owner of Solarr.dark – 2026 vibes 🚀</p>
-            <p id="owner-etc">Etc: Supreme Ruler, Etc Master</p>
-        </div>
-        <div id="owner-edit-form">
-            <h3>Customize Owner Profile (Owner Only)</h3>
-            <input type="text" id="edit-pfp" placeholder="PFP URL">
-            <input type="text" id="edit-display" placeholder="Display Name">
-            <input type="text" id="edit-username" placeholder="Username">
-            <input type="text" id="edit-ranks" placeholder="Ranks (comma separated)">
-            <input type="text" id="edit-nametags" placeholder="Nametags (comma separated)">
-            <textarea id="edit-bio" placeholder="Bio"></textarea>
-            <input type="text" id="edit-etc" placeholder="Etc extras">
-            <button class="btn" onclick="saveOwnerProfile()">Save Changes</button>
-        </div>
-    </section>
+    <section id="owner" class="glass"><h2>Owner Account 🧑‍💼</h2><div id="owner-profile"><img id="owner-pfp" src=""><h3 id="owner-display-name"></h3><p id="owner-username"></p><p id="owner-ranks"></p><p id="owner-nametags"></p><p id="owner-bio"></p><p id="owner-etc"></p></div><div id="owner-edit-form"><h3>Customize (Owner Only)</h3><input type="text" id="edit-pfp" placeholder="PFP URL"><input type="text" id="edit-display" placeholder="Display Name"><input type="text" id="edit-username" placeholder="Username"><input type="text" id="edit-ranks" placeholder="Ranks"><input type="text" id="edit-nametags" placeholder="Nametags"><textarea id="edit-bio" placeholder="Bio"></textarea><input type="text" id="edit-etc" placeholder="Etc"><button class="btn" onclick="saveOwnerProfile()">Save</button></div></section>
 
-    <section id="updates" class="glass">
-        <h2>Updates 🚀</h2>
-        <p>v1.0 - Jan 2026: Launched Solarr.dark with games, search, notes</p>
-        <p>v1.1 - Feb 2026: Added admin perks & themes</p>
-        <p>v1.2 - Mar 2026: Better buttons, animations, everything 🔥</p>
-        <p>More coming 2026!</p>
-    </section>
+    <section id="updates" class="glass"><h2>Updates 🚀</h2><p>v1.0 - Jan 2026: Launch</p><p>v2.0 - Jan 2026: Full save fix + crystal UI 🔥</p></section>
 
-    <section id="login" class="glass">
-        <h2>Login (Optional)</h2>
-        <input type="password" id="pass-input" placeholder="Enter password">
-        <button class="btn" onclick="login()">Login</button>
-        <p id="role-display"></p>
-    </section>
+    <section id="login" class="glass"><h2>Login</h2><input type="password" id="pass-input" placeholder="Password"><button class="btn" onclick="login()">Login</button><p id="role-display"></p></section>
 
-    <section id="settings" class="glass">
-        <h2>Customize Vibes</h2>
-        <form id="theme-form">
-            <label>Glass Mode:</label>
-            <input type="checkbox" id="glass-mode-toggle" checked>
-            <label>Nav Buttons Position (Owner only):</label>
-            <select id="nav-layout">
-                <option value="center">Center (Default)</option>
-                <option value="split">Split Left/Right</option>
-                <option value="left">All Left</option>
-            </select>
-            <button type="button" class="btn" onclick="applyTheme()">Apply</button>
-        </form>
-    </section>
+    <section id="settings" class="glass"><h2>Customize</h2><label>Glass Mode:</label><input type="checkbox" id="glass-mode-toggle" checked><label>Nav Position (Owner only):</label><select id="nav-layout"><option value="center">Center</option><option value="split">Split</option><option value="left">Left</option></select><button class="btn" onclick="applyTheme()">Apply</button></section>
 
     <div class="watermark">2026 tairizzu / auragod . solarr.dark</div>
+    <div class="footer-credit">Handcrafted by taithedev © 2026</div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // particles subtle crystal vibe
-        particlesJS('particles-js', {
-            particles: { number: { value: 60, density: { enable: true, value_area: 800 } }, color: { value: '#00ffae' }, shape: { type: 'circle' }, opacity: { value: 0.4, random: false }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#00ffae', opacity: 0.2, width: 1 }, move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false } },
-            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true }, modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8 }, repulse: { distance: 200 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } } },
-            retina_detect: true
-        });
+        particlesJS('particles-js', {particles:{number:{value:70},color:{value:'#00ffae'},opacity:{value:0.5},size:{value:3},line_linked:{enable:true,color:'#00ffae',opacity:0.3,width:1},move:{enable:true,speed:2}},interactivity:{events:{onhover:{enable:true,mode:'grab'}}},retina_detect:true});
 
-        // snowflakes
-        setInterval(() => {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.innerText = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            snowflake.style.opacity = Math.random();
-            snowflake.style.fontSize = Math.random() * 10 + 
+        setInterval(()=>{const s=document.createElement('div');s.classList.add('snowflake');s.innerText='❄';s.style.left=Math.random()*100+'vw';s.style.animationDuration=Math.random()*4+3+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),7000);},250);
+
+        const observer=new IntersectionObserver(e=>e.forEach(en=>en.isIntersecting&&en.target.classList.add('visible')));
+        document.querySelectorAll('section').forEach(s=>observer.observe(s));
+
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});});});
+
+        let stats=JSON.parse(localStorage.getItem('solarrStats')||'{"online":1,"logins":0,"notes":0,"xwins":0,"owins":0,"etc":420}');
+        function updateStats(){document.getElementById('online-count').innerText=stats.online;document.getElementById('stats-online').innerText=stats.online;document.getElementById('stats-logins').innerText=stats.logins;document.getElementById('stats-notes').innerText=stats.notes;document.getElementById('stats-xwins').innerText=stats.xwins;document.getElementById('stats-owins').innerText=stats.owins;document.getElementById('stats-etc').innerText=stats.etc;localStorage.setItem('solarrStats',JSON.stringify(stats));}
+        stats.online+=1;updateStats();
+
+        let role=localStorage.getItem('role')||'guest';
+        function login(){const pass=document.getElementById('pass-input').value;if(pass==='1010')role='admin';else if(pass==='0110')role='owner';else if(pass==='tairizzu')role='VIP';else if(pass==='tailovesyoupookie')role='Pookie';else{alert('wrong pass bro');return;}localStorage.setItem('role',role);document.getElementById('role-display').innerText=`Logged in as ${role}!`;stats.logins+=1;updateStats();if(role==='admin'||role==='owner')document.getElementById('admin').classList.remove('admin-only');if(role==='owner'){document.getElementById('owner-edit-form').style.display='block';document.getElementById('nav-layout').disabled=false;}loadOwnerProfile();}
+        if(role!=='guest'){document.getElementById('role-display').innerText=`Welcome back ${role}!`;if(role==='admin'||role==='owner')document.getElementById('admin').classList.remove('admin-only');if(role==='owner'){document.getElementById('owner-edit-form').style.display='block';document.getElementById('nav-layout').disabled=false;}} 
+
+        function sendAnnouncement(){const msg=prompt('Announcement?');if(msg)alert('Sent: '+msg);}
+
+        function addNote(){const text=document.getElementById('note-input').value;if(!text)return;const notes=JSON.parse(localStorage.getItem('notes')||'[]');notes.push(text);localStorage.setItem('notes',JSON.stringify(notes));stats.notes=notes.length;updateStats();loadNotes();document.getElementById('note-input').value='';}
+        function loadNotes(){const list=document.getElementById('notes-list');list.innerHTML='';const notes=JSON.parse(localStorage.getItem('notes')||'[]');notes.forEach(n=>{const div=document.createElement('div');div.classList.add('note');div.innerText=n;list.appendChild(div);});}
+        loadNotes();
+
+        let tttBoard=Array(9).fill(null);let tttTurn='X';const tttGrid=document.getElementById('tic-tac-toe');const tttStatus=document.getElementById('ttt-status');
+        function renderTTT(){tttGrid.innerHTML='';tttBoard.forEach((c,i)=>{const d=document.createElement('div');d.innerText=c;d.onclick=()=>makeTTTMove(i);tttGrid.appendChild(d);});}
+        function makeTTTMove(i){if(tttBoard[i]||checkTTTWinner())return;tttBoard[i]=tttTurn;tttTurn=tttTurn==='X'?'O':'X';renderTTT();const w=checkTTTWinner();if(w){tttStatus.innerText=w+' wins!';if(w==='X')stats.xwins+=1;else stats.owins+=1;updateStats();}else if(tttBoard.every(c=>c)){tttStatus.innerText='Tie!';}else tttStatus.innerText=tttTurn+"'s turn";}
+        function checkTTTWinner(){const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];for(let w of wins){if(tttBoard[w[0]]&&tttBoard[w[0]]===tttBoard[w[1]]&&tttBoard[w[0]]===tttBoard[w[2]])return tttBoard[w[0]];}return null;}
+        function resetTTT(){tttBoard=Array(9).fill(null);tttTurn='X';tttStatus.innerText="X's turn";renderTTT();}
+        renderTTT();
+
+        let ownerData=JSON.parse(localStorage.getItem('ownerData')||'{"pfp":"https://via.placeholder.com/200","display":"Tai Rizzu","username":"@auragod","ranks":"God Tier, Founder","nametags":"#2026Vibes #TaiTheDev","bio":"Owner of Solarr.dark – 2026 vibes 🚀","etc":"Supreme Ruler"}');
+        function loadOwnerProfile(){document.getElementById('owner-pfp').src=ownerData.pfp||'https://via.placeholder.com/200';document.getElementById('owner-display-name').innerText=ownerData.display;document.getElementById('owner-username').innerText=ownerData.username;document.getElementById('owner-ranks').innerText=`Ranks: ${ownerData.ranks}`;document.getElementById('owner-nametags').innerText=`Nametags: ${ownerData.nametags}`;document.getElementById('owner-bio').innerText=ownerData.bio;document.getElementById('owner-etc').innerText=`Etc: ${ownerData.etc}`;if(role==='owner'){document.getElementById('owner-edit-form').style.display='block';document.getElementById('edit-pfp').value=ownerData.pfp;document.getElementById('edit-display').value=ownerData.display;document.getElementById('edit-username').value=ownerData.username;document.getElementById('edit-ranks').value=ownerData.ranks;document.getElementById('edit-nametags').value=ownerData.nametags;document.getElementById('edit-bio').value=ownerData.bio;document.getElementById('edit-etc').value=ownerData.etc;}else document.getElementById('owner-edit-form').style.display='none';}
+        function saveOwnerProfile(){if(role!=='owner')return alert('Owner only!');ownerData={pfp:document.getElementById('edit-pfp').value,display:document.getElementById('edit-display').value,username:document.getElementById('edit-username').value,ranks:document.getElementById('edit-ranks').value,nametags:document.getElementById('edit-nametags').value,bio:document.getElementById('edit-bio').value,etc:document.getElementById('edit-etc').value};localStorage.setItem('ownerData',JSON.stringify(ownerData));loadOwnerProfile();}
+        loadOwnerProfile();
+
+        let glassMode=localStorage.getItem('glassMode')!=='false';let navLayout=localStorage.getItem('navLayout')||'center';
+        function applyTheme(){glassMode=document.getElementById('glass-mode-toggle').checked;document.body.classList.toggle('glass-mode',glassMode);localStorage.setItem('glassMode',glassMode);navLayout=document.getElementById('nav-layout').value;const nav=document.getElementById('main-nav');nav.classList.remove('nav-split','nav-left');if(navLayout==='split')nav.classList.add('nav-split');if(navLayout==='left')nav.classList.add('nav-left');localStorage.setItem('navLayout',navLayout);}
+        document.getElementById('glass-mode-toggle').checked=glassMode;document.getElementById('nav-layout').value=navLayout;document.getElementById('nav-layout').disabled=role!=='owner';applyTheme();
+        document.getElementById('glass-mode-toggle').addEventListener('change',applyTheme);document.getElementById('nav-layout').addEventListener('change',applyTheme);
+    </script>
+</body>
+</html>
