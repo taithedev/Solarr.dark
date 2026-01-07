@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solarr.dark</title>
+    <style>
+        :root {
+            --primary-color: #9d4edd; /* Purple default */
+            --accent-color: #ffffff;
+            --bg-gradient: linear-gradient(to bottom, #0f0f1e, #1a0033);
+            --outline-style: 2px solid rgba(255,255,255,0.18);
+            --snowflake-color: rgba(255, 255, 255, 0.6);
+            --glow: 0 0 20px var(--primary-color);
+            --glass-bg: rgba(15, 15, 30, 0.5);
+            --glass-blur: blur(20px);
+            --glass-border: 1px solid rgba(255,255,255,0.18);
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--accent-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .glass-mode nav, .glass-mode section, .glass-mode .btn, .glass-mode .note {
+            background: var(--glass-bg) !important;
+            backdrop-filter: var(--glass-blur);
+            border: var(--glass-border);
+            border-radius: 20px;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 30, 0.9);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 100;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #online-counter {
+            position: absolute;
+            left: 20px;
+            background: var(--glass-bg);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: var(--glass-border);
+            font-weight: bold;
+        }
+        nav a {
+            color: var(--accent-color);
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.4s;
+        }
+        nav a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--glow);
+            background: rgba(157, 78, 221, 0.2);
+        }
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s, transform 0.8s;
+            background: rgba(15,15,30,0.2);
+            margin: 20px;
+            border-radius: 20px;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h1, h2 {
+            color: var(--primary-color);
+            text-shadow: var(--glow);
+            font-size: 3.5em;
+        }
+        .btn {
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-color), #6a1b9a);
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            box-shadow: var(--glow);
+            animation: pulse 2s infinite;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            transform: rotate(45deg);
+            animation: liquid-wave 5s infinite linear;
+            opacity: 0.5;
+        }
+        .btn:hover {
+            transform: scale(1.15) translateY(-10px);
+            box-shadow: 0 0 40px var(--primary-color);
+        }
+        .btn:hover::before {
+            animation: liquid-wave-hover 2s infinite linear;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: var(--glow); }
+            50% { box-shadow: 0 0 30px var(--primary-color); }
+        }
+        @keyframes liquid-wave {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(20%, 20%) rotate(360deg); }
+        }
+        @keyframes liquid-wave-hover {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(10%, 10%) rotate(180deg); }
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .snowflake {
+            position: absolute;
+            color: var(--snowflake-color);
+            font-size: 1.5em;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.9em;
+            opacity: 0.7;
+            z-index: 50;
+        }
+        iframe {
+            width: 80%;
+            height: 600px;
+            border: var(--outline-style);
+            border-radius: 20px;
+            background: var(--glass-bg);
+        }
+        #notes-list {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .note {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 20px;
+            border: var(--outline-style);
+            transition: transform 0.3s;
+        }
+        .note:hover {
+            transform: scale(1.05);
+        }
+        .admin-only {
+            display: none;
+        }
+        #tic-tac-toe {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 320px;
+        }
+        #tic-tac-toe div {
+            background: var(--glass-bg);
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            border-radius: 10px;
+            border: var(--glass-border);
+        }
+        .stat-card {
+            background: var(--glass-bg);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 20px;
+            border: var(--glass-border);
+            display: inline-block;
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body class="glass-mode">
+    <nav>
+        <div id="online-counter">Users Online: <span id="online-count">1</span> 👥</div>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#games">Games</a>
+        <a href="#search">Search</a>
+        <a href="#notes">Notes</a>
+        <a href="#stats">Stats</a>
+        <a href="#admin">Admin</a>
+        <a href="#updates">Updates</a>
+        <a href="#login">Login</a>
+        <a href="#settings">Settings</a>
+    </nav>
+
+    <div id="particles-js"></div>
+
+    <section id="home">
+        <h1>Solarr.dark</h1>
+        <p>The ultimate school stealth hub – games, search, notes, stats, and more. Stay lowkey 🔥</p>
+        <button class="btn" onclick="document.querySelector('#login').scrollIntoView({behavior:'smooth'})">Login for Perks</button>
+    </section>
+
+    <section id="features">
+        <h2>Features That Slap</h2>
+        <ul style="list-style:none;max-width:800px;margin:auto;">
+            <li>🎮 Offline & Online Games</li>
+            <li>🔍 Secret Google Search</li>
+            <li>🔑 Admin/Owner Perks</li>
+            <li>📢 Announcements & Bans</li>
+            <li>👥 Live User Count & Stats</li>
+            <li>👤 Optional Accounts</li>
+            <li>📝 Notes System</li>
+            <li>🚀 Updates & Liquid Glass Themes</li>
+            <li>& more etc!</li>
+        </ul>
+    </section>
+
+    <section id="games">
+        <h2>Games Zone 🎮</h2>
+        <p>Unblocked links + offline Tic-Tac-Toe!</p>
+        <button class="btn" onclick="window.open('https://www.coolmathgames.com','_blank')">Cool Math</button>
+        <button class="btn" onclick="window.open('https://slope.game','_blank')">Slope</button>
+        <div id="tic-tac-toe"></div>
+        <p id="ttt-status">X's turn</p>
+        <button class="btn" onclick="resetTTT()">Reset</button>
+    </section>
+
+    <section id="search">
+        <h2>Secret Search 🔍</h2>
+        <iframe src="https://www.google.com/webhp?igu=1"></iframe>
+    </section>
+
+    <section id="notes">
+        <h2>Notes System 📝</h2>
+        <input type="text" id="note-input" placeholder="Write note..." style="width:60%;padding:10px;border-radius:10px;">
+        <button class="btn" onclick="addNote()">Add Note</button>
+        <div id="notes-list"></div>
+    </section>
+
+    <section id="stats">
+        <h2>Live Stats 👥📊</h2>
+        <div class="stat-card">Users Online: <span id="stats-online">1</span></div>
+        <div class="stat-card">Total Logins: <span id="stats-logins">0</span></div>
+        <div class="stat-card">Notes Saved: <span id="stats-notes">0</span></div>
+        <div class="stat-card">Games Won (X): <span id="stats-xwins">0</span></div>
+        <div class="stat-card">Games Won (O): <span id="stats-owins">0</span></div>
+        <div class="stat-card">Total Pranks Pulled: <span id="stats-etc">420</span> 😂</div>
+    </section>
+
+    <section id="admin" class="admin-only">
+        <h2>Admin Panel 🔑</h2>
+        <button class="btn" onclick="sendAnnouncement()">Send Announcement</button>
+        <button class="btn" onclick="alert('User banned! (demo)')">Ban User</button>
+        <button class="btn" onclick="alert('User kicked! (demo)')">Kick User</button>
+    </section>
+
+    <section id="updates">
+        <h2>Updates 🚀</h2>
+        <p>v1.0 - Jan 2026: Launch</p>
+        <p>v1.1 - Feb 2026: Glass mode</p>
+        <p>v1.3 - Jan 2026: Live stats & user count 🔥</p>
+    </section>
+
+    <section id="login">
+        <h2>Login (Optional)</h2>
+        <input type="password" id="pass-input" placeholder="Password" style="padding:10px;border-radius:10px;">
+        <button class="btn" onclick="login()">Login</button>
+        <p id="role-display"></p>
+    </section>
+
+    <section id="settings">
+        <h2>Customize Vibes</h2>
+        <form id="theme-form">
+            <label>Glass Mode:</label>
+            <input type="checkbox" id="glass-mode-toggle" checked>
+            <label>Primary Color:</label>
+            <select id="primary-color">
+                <option value="#9d4edd">Purple</option>
+                <option value="#007bff">Blue</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="color" id="custom-primary" style="display:none;">
+            <button type="button" class="btn" onclick="applyTheme()">Apply</button>
+        </form>
+    </section>
+
+    <div class="watermark">2026 tairizzu / auragod . solarr.dark</div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: { number: { value: 100 }, color: { value: '#9d4edd' }, line_linked: { color: '#9d4edd' } },
+            interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } }
+        });
+
+        setInterval(() => {
+            const s = document.createElement('div');
+            s.classList.add('snowflake');
+            s.innerText = '❄';
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.animationDuration = Math.random() * 5 + 5 + 's';
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 10000);
+        }, 200);
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Stats & Online Users
+        let stats = JSON.parse(localStorage.getItem('solarrStats') || '{"online":1,"logins":0,"notes":0,"xwins":0,"owins":0}');
+        function updateStats() {
+            document.getElementById('online-count').innerText = stats.online;
+            document.getElementById('stats-online').innerText = stats.online;
+            document.getElementById('stats-logins').innerText = stats.logins;
+            document.getElementById('stats-notes').innerText = stats.notes;
+            document.getElementById('stats-xwins').innerText = stats.xwins;
+            document.getElementById('stats-owins').innerText = stats.owins;
+            localStorage.setItem('solarrStats', JSON.stringify(stats));
+        }
+        // Simulate online (increases on load, you can add more logic)
+        stats.online += 1; // Feels like more users join
+        updateStats();
+
+        // Login
+        let role = localStorage.getItem('role') || 'guest';
+        function login() {
+            const pass = document.getElementById('pass-input').value;
+            if (pass === '1010') role = 'admin';
+            else if (pass === '0110') role = 'owner';
+            else if (pass === 'tairizzu') role = 'VIP';
+            else if (pass === 'tailovesyoupookie') role = 'Pookie';
+            else { alert('Wrong pass!'); return; }
+            localStorage.setItem('role', role);
+            document.getElementById('role-display').innerText = `Logged in as ${role}!`;
+            stats.logins += 1;
+            updateStats();
+            if (role === 'admin' || role === 'owner') document.getElementById('admin').classList.remove('admin-only');
+        }
+        if (role !== 'guest') {
+            document.getElementById('role-display').innerText = `Welcome back ${role}!`;
+            if (role === 'admin' || role === 'owner') document.getElementById('admin').classList.remove('admin-only');
+        }
+
+        function sendAnnouncement() {
+            const msg = prompt('Announcement?');
+            if (msg) alert('Sent: ' + msg);
+        }
+
+        // Notes
+        function addNote() {
+            const text = document.getElementById('note-input').value;
+            if (!text) return;
+            const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+            notes.push(text);
+            localStorage.setItem('notes', JSON.stringify(notes));
+            stats.notes = notes.length;
+            updateStats();
+            loadNotes();
+            document.getElementById('note-input').value = '';
+        }
+        function loadNotes() {
+            const list = document.getElementById('notes-list');
+            list.innerHTML = '';
+            const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+            notes.forEach(n => {
+                const div = document.createElement('div');
+                div.classList.add('note');
+                div.innerText = n;
+                list.appendChild(div);
+            });
+        }
+        loadNotes();
+
+        // Tic-Tac-Toe
+        let tttBoard = Array(9).fill(null);
+        let tttTurn = 'X';
+        const tttGrid = document.getElementById('tic-tac-toe');
+        const tttStatus = document.getElementById('ttt-status');
+        function renderTTT() {
+            tttGrid.innerHTML = '';
+            tttBoard.forEach((cell, i) => {
+                const div = document.createElement('div');
+                div.innerText = cell || '';
+                div.onclick = () => makeTTTMove(i);
+                tttGrid.appendChild(div);
+            });
+        }
+        function makeTTTMove(i) {
+            if (tttBoard[i] || checkTTTWinner()) return;
+            tttBoard[i] = tttTurn;
+            tttTurn = tttTurn === 'X' ? 'O' : 'X';
+            renderTTT();
+            const winner = checkTTTWinner();
+            if (winner) {
+                tttStatus.innerText = `${winner} wins!`;
+                if (winner === 'X') stats.xwins += 1;
+                else stats.owins += 1;
+                updateStats();
+            } else if (tttBoard.every(c => c)) {
+                tttStatus.innerText = 'Tie!';
+            } else {
+                tttStatus.innerText = `${tttTurn}'s turn`;
+            }
+        }
+        function checkTTTWinner() {
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            for (let w of wins) {
+                if (tttBoard[w[0]] && tttBoard[w[0]] === tttBoard[w[1]] && tttBoard[w[0]] === tttBoard[w[2]]) {
+                    return tttBoard[w[0]];
+                }
+            }
+            return null;
+        }
+        function resetTTT() {
+            tttBoard = Array(9).fill(null);
+            tttTurn = 'X';
+            tttStatus.innerText = "X's turn";
+            renderTTT();
+        }
+        renderTTT();
+
+        // Theme
+        function applyTheme() {
+            const glassToggle = document.getElementById('glass-mode-toggle').checked;
+            document.body.classList.toggle('glass-mode', glassToggle);
+            localStorage.setItem('glassMode', glassToggle);
+            const primary = document.getElementById('primary-color').value === 'custom' ? document.getElementById('custom-primary').value : document.getElementById('primary-color').value;
+            document.documentElement.style.setProperty('--primary-color', primary);
+            document.getElementById('custom-primary').style.display = document.getElementById('primary-color').value === 'custom' ? 'block' : 'none';
+        }
+        document.getElementById('glass-mode-toggle').addEventListener('change', applyTheme);
+        document.getElementById('primary-color').addEventListener('change', applyTheme);
+        if (localStorage.getItem('glassMode') !== 'false') applyTheme();
+    </script>
+</body>
+</html>
