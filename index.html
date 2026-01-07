@@ -62,16 +62,16 @@
         }
         .nav-links {
             display: flex;
-            gap: 18px;
+            gap: 25px; /* more space for fewer buttons */
             flex-wrap: wrap;
             justify-content: center;
         }
         nav a {
-            padding: 14px 32px;
-            border-radius: 18px;
+            padding: 16px 40px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.15em;
+            font-size: 1.3em;
             color: var(--text-color);
             background: rgba(255,255,255,0.06);
             transition: all 0.45s;
@@ -82,8 +82,8 @@
             transform: translateY(-8px);
             box-shadow: var(--glow);
         }
-        .nav-split .nav-links { justify-content: space-between; width: 100%; padding: 0 120px; }
-        .nav-left .nav-links { justify-content: flex-start; margin-left: 180px; }
+        .nav-split .nav-links { justify-content: space-between; width: 100%; padding: 0 150px; }
+        .nav-left .nav-links { justify-content: flex-start; margin-left: 200px; }
         section {
             min-height: 100vh;
             padding: 140px 40px 80px;
@@ -245,7 +245,15 @@
         <div id="nav-inner">
             <div id="online-counter" class="glass">Users Online: <span id="online-count">1</span> 👥</div>
             <div class="nav-links" id="nav-links">
-                <a href="#home">Home</a><a href="#features">Features</a><a href="#games">Games</a><a href="#search">Search</a><a href="#notes">Notes</a><a href="#stats">Stats</a><a href="#admin">Admin</a><a href="#owner">Owner</a><a href="#updates">Updates</a><a href="#login">Login</a><a href="#settings">Settings</a>
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#games">Games</a>
+                <a href="#search">Search</a>
+                <a href="#notes">Notes</a>
+                <a href="#stats">Stats</a>
+                <a href="#owner">Owner</a>
+                <a href="#login">Login</a>
+                <a href="#settings">Settings</a>
             </div>
         </div>
     </nav>
@@ -254,7 +262,7 @@
 
     <section id="home" class="glass"><h1>solarr.dark</h1><p>The ultimate school stealth hub – games, search, notes, stats, owner page, and more. Stay lowkey 🔥</p><button class="btn" onclick="document.querySelector('#login').scrollIntoView({behavior:'smooth'})">Login for Perks</button></section>
 
-    <section id="features" class="glass"><h2>Features That Slap</h2><ul><li>🎮 Offline & Online Games (unblocked school vibes)</li><li>🔍 Secret Google Search (bypass blocks easy)</li><li>🔑 Admin/Owner Perks</li><li>📢 Announcements, Bans, Kicks</li><li>👥 Live User Count & Stats</li><li>👤 Optional Accounts</li><li>📝 Notes System</li><li>🧑‍💼 Custom Owner Profile</li><li>🚀 Updates & Glass Themes</li></ul></section>
+    <section id="features" class="glass"><h2>Features That Slap</h2><ul><li>🎮 Offline & Online Games (unblocked school vibes)</li><li>🔍 Secret Google Search (bypass blocks easy)</li><li>🔑 Admin/Owner Perks (login to see)</li><li>👥 Live User Count & Stats</li><li>👤 Optional Accounts</li><li>📝 Notes System</li><li>🧑‍💼 Custom Owner Profile</li><li>🚀 Glass Themes & Nav Customize</li></ul></section>
 
     <section id="games" class="glass"><h2>Games Zone 🎮</h2><button class="btn" onclick="window.open('https://www.coolmathgames.com','_blank')">Cool Math</button><button class="btn" onclick="window.open('https://slope.game','_blank')">Slope</button><div id="tic-tac-toe"></div><p id="ttt-status">X's turn</p><button class="btn" onclick="resetTTT()">Reset</button></section>
 
@@ -264,11 +272,7 @@
 
     <section id="stats" class="glass"><h2>Live Stats 👥📊</h2><div class="stat-card">Users Online: <span id="stats-online">1</span></div><div class="stat-card">Total Logins: <span id="stats-logins">0</span></div><div class="stat-card">Notes Saved: <span id="stats-notes">0</span></div><div class="stat-card">Games Won (X): <span id="stats-xwins">0</span></div><div class="stat-card">Games Won (O): <span id="stats-owins">0</span></div><div class="stat-card">Total Pranks: <span id="stats-etc">420</span> 😂</div></section>
 
-    <section id="admin" class="glass admin-only"><h2>Admin Panel 🔑</h2><button class="btn" onclick="sendAnnouncement()">Send Announcement</button><button class="btn" onclick="alert('Banned!')">Ban User</button><button class="btn" onclick="alert('Kicked!')">Kick User</button></section>
-
     <section id="owner" class="glass"><h2>Owner Account 🧑‍💼</h2><div id="owner-profile"><img id="owner-pfp" src=""><h3 id="owner-display-name"></h3><p id="owner-username"></p><p id="owner-ranks"></p><p id="owner-nametags"></p><p id="owner-bio"></p><p id="owner-etc"></p></div><div id="owner-edit-form"><h3>Customize (Owner Only)</h3><input type="text" id="edit-pfp" placeholder="PFP URL"><input type="text" id="edit-display" placeholder="Display Name"><input type="text" id="edit-username" placeholder="Username"><input type="text" id="edit-ranks" placeholder="Ranks"><input type="text" id="edit-nametags" placeholder="Nametags"><textarea id="edit-bio" placeholder="Bio"></textarea><input type="text" id="edit-etc" placeholder="Etc"><button class="btn" onclick="saveOwnerProfile()">Save</button></div></section>
-
-    <section id="updates" class="glass"><h2>Updates 🚀</h2><p>v1.0 - Jan 2026: Launch</p><p>v2.0 - Jan 2026: Full save fix + crystal UI 🔥</p></section>
 
     <section id="login" class="glass"><h2>Login</h2><input type="password" id="pass-input" placeholder="Password"><button class="btn" onclick="login()">Login</button><p id="role-display"></p></section>
 
@@ -293,10 +297,8 @@
         stats.online+=1;updateStats();
 
         let role=localStorage.getItem('role')||'guest';
-        function login(){const pass=document.getElementById('pass-input').value;if(pass==='1010')role='admin';else if(pass==='0110')role='owner';else if(pass==='tairizzu')role='VIP';else if(pass==='tailovesyoupookie')role='Pookie';else{alert('wrong pass bro');return;}localStorage.setItem('role',role);document.getElementById('role-display').innerText=`Logged in as ${role}!`;stats.logins+=1;updateStats();if(role==='admin'||role==='owner')document.getElementById('admin').classList.remove('admin-only');if(role==='owner'){document.getElementById('owner-edit-form').style.display='block';document.getElementById('nav-layout').disabled=false;}loadOwnerProfile();}
-        if(role!=='guest'){document.getElementById('role-display').innerText=`Welcome back ${role}!`;if(role==='admin'||role==='owner')document.getElementById('admin').classList.remove('admin-only');if(role==='owner'){document.getElementById('owner-edit-form').style.display='block';document.getElementById('nav-layout').disabled=false;}} 
-
-        function sendAnnouncement(){const msg=prompt('Announcement?');if(msg)alert('Sent: '+msg);}
+        function login(){const pass=document.getElementById('pass-input').value;if(pass==='1010')role='admin';else if(pass==='0110')role='owner';else if(pass==='tairizzu')role='VIP';else if(pass==='tailovesyoupookie')role='Pookie';else{alert('wrong pass bro');return;}localStorage.setItem('role',role);document.getElementById('role-display').innerText=`Logged in as ${role}!`;stats.logins+=1;updateStats();if(role==='admin'||role==='owner')document.getElementById('admin')&&document.getElementById('admin').classList.remove('admin-only');if(role==='owner'){document.getElementById('owner-edit-form').style.display='block';document.getElementById('nav-layout').disabled=false;}loadOwnerProfile();}
+        if(role!=='guest'){document.getElementById('role-display').innerText=`Welcome back ${role}!`;if(role==='admin'||role==='owner')document.getElementById('admin')&&document.getElementById('admin').classList.remove('admin-only');if(role==='owner'){document.getElementById('owner-edit-form').style.display='block';document.getElementById('nav-layout').disabled=false;}}
 
         function addNote(){const text=document.getElementById('note-input').value;if(!text)return;const notes=JSON.parse(localStorage.getItem('notes')||'[]');notes.push(text);localStorage.setItem('notes',JSON.stringify(notes));stats.notes=notes.length;updateStats();loadNotes();document.getElementById('note-input').value='';}
         function loadNotes(){const list=document.getElementById('notes-list');list.innerHTML='';const notes=JSON.parse(localStorage.getItem('notes')||'[]');notes.forEach(n=>{const div=document.createElement('div');div.classList.add('note');div.innerText=n;list.appendChild(div);});}
